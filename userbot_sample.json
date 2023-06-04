@@ -1,0 +1,10 @@
+{
+    "bot_token": "<TELEGRAM_BOT_TOKENS>",
+    "server_address": "<SERVER_ADDRESS>",
+    "ports": [22, 8443, 873],
+    "location": "CA",
+    "admin_list": [11111111, 1111111111],
+    "log_chat": "<TELEGRAM_GROUP_ID_FOR_LOGS>",
+    "prefix": "sshmgmt"
+}
+

@@ -2,6 +2,15 @@
 name = "ssh-manager-bot"
 version = "0.1.0"
 edition = "2021"
+authors = ["Zola Gonano <zolagonano@protonmail.com>"]
+description = "A Telegram bot to manage SSH Users"
+homepage = "https://github.com/zolagonano/ssh-manager-bot.git"
+repository = "https://github.com/zolagonano/ssh-manager-bot.git"
+keywords = ["ssh", "telegram"]
+categories = ["command-line-utilities"]
+license = "MIT"
+readme = "README.md"
+
 
 [lib]
 name = "lib"

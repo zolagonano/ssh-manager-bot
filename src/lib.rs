@@ -74,6 +74,7 @@ impl fmt::Display for UserExp {
     }
 }
 
+/// Represents the user information.
 pub struct SSHUser {
     pub username: String,
     pub password: String,
@@ -81,6 +82,7 @@ pub struct SSHUser {
     pub expiry_date: String,
 }
 
+/// Displays the SSH user information in a human-readable format.
 impl fmt::Display for SSHUser {
     fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(
@@ -91,6 +93,18 @@ impl fmt::Display for SSHUser {
     }
 }
 
+/// Creates a new SSH user with the provided information.
+///
+/// # Arguments
+///
+/// * `username` - The username for the new SSH user.
+/// * `group` - The user group for the new SSH user.
+/// * `password` - The password for the new SSH user.
+/// * `exp_date` - The expiry date for the new SSH user's account.
+///
+/// # Returns
+///
+/// A `Result` containing the `SSHUser` if successful, or an error message if the user creation fails.
 pub fn newuser(
     username: &str,
     group: &str,
@@ -128,6 +142,18 @@ pub fn newuser(
     }
 }
 
+/// Automatically generates a new SSH user based on certain parameters.
+///
+/// # Arguments
+///
+/// * `prefix` - The prefix for the username.
+/// * `group` - The user group for the new SSH user.
+/// * `days` - The number of days until the account expiry.
+///
+/// # Returns
+///
+/// A `Result` containing the automatically generated `SSHUser` if successful, or an error message if
+/// the user creation fails.
 pub fn auto_newuser(prefix: &str, group: &str, days: i64) -> Result<SSHUser, String> {
     let password = gen_password();
 
@@ -400,6 +426,20 @@ fn compress_data(data: &[u8]) -> Result<Vec<u8>, std::io::Error> {
     encoder.finish()
 }
 
+/// Generates a Sagernet link for SSH connection based on user and server details.
+///
+/// # Arguments
+///
+/// * `server_address` - The address of the SSH server.
+/// * `port` - The port number for SSH connection.
+/// * `username` - The username for SSH authentication.
+/// * `password` - The password for SSH authentication.
+/// * `location` - The location of the server.
+/// * `exp_date` - The expiry date for the SSH user's account.
+///
+/// # Returns
+///
+/// A Sagernet link encoded for SSH connection.
 pub fn sagernet_link_generator(
     server_address: &str,
     port: u32,
@@ -450,6 +490,15 @@ pub fn sagernet_link_generator(
     format!("sn://ssh?{}", base64_urlsafe)
 }
 
+/// Generates a QR code image with the provided text.
+///
+/// # Arguments
+///
+/// * `text` - The text to be encoded in the QR code.
+///
+/// # Returns
+///
+/// A vector of bytes representing the QR code image.
 pub fn encode_qr_code_to_image_bytes(text: &str) -> Vec<u8> {
     let qrcode = QrCode::new(text.as_bytes());
     let qrcode_image_buffer = qrcode

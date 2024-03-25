@@ -46,7 +46,7 @@ Create a configuration file named `userbot.json` with the following structure:
 ### Usage
 1. Run the compiled binary:
    ```bash
-   ./target/release/telegram-ssh-bot
+   ./target/release/ssh-manager-bot
    ```
 
 2. Interact with the bot using Telegram commands.
